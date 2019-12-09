@@ -1,10 +1,18 @@
 package br.com.Fundatec.Cafe.Cafe.Model;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
-@EntityScan
+@Entity
 public class CafeLd {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idNome;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idIntregador;
     private String nome;
     private String intregador;
     private String endereco;
@@ -59,5 +67,21 @@ public class CafeLd {
 
     public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
+    }
+
+    public Long getIdNome() {
+        return idNome;
+    }
+
+    public void setIdNome(Long idNome) {
+        this.idNome = idNome;
+    }
+
+    public Long getIdIntregador() {
+        return idIntregador;
+    }
+
+    public void setIdIntregador(Long idIntregador) {
+        this.idIntregador = idIntregador;
     }
 }

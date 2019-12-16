@@ -1,25 +1,36 @@
 package br.com.Fundatec.Cafe.Cafe.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
+
 @Entity
-public class CafeLd {
+public class CafeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idNome;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idIntregador;
     private String nome;
-    private String intregador;
     private String endereco;
     private String produto;
     private LocalDate dataPedido;
     private LocalDate dataEntrega;
+    @OneToMany(mappedBy = "cafeModel")
+    private Set<IntregadorModel> intregadorModelSet;
 
+
+
+
+    public CafeModel() {
+    }
+
+    public CafeModel(Long idNome, String nome, String endereco, String produto, LocalDate dataPedido, LocalDate dataEntrega) {
+        this.idNome = idNome;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.produto = produto;
+        this.dataPedido = dataPedido;
+        this.dataEntrega = dataEntrega;
+    }
 
     public String getNome() {
         return nome;
@@ -29,13 +40,6 @@ public class CafeLd {
         this.nome = nome;
     }
 
-    public String getIntregador() {
-        return intregador;
-    }
-
-    public void setIntregador(String intregador) {
-        this.intregador = intregador;
-    }
 
     public String getEndereco() {
         return endereco;
@@ -77,11 +81,11 @@ public class CafeLd {
         this.idNome = idNome;
     }
 
-    public Long getIdIntregador() {
-        return idIntregador;
+    public Set<IntregadorModel> getIntregadorModelSet() {
+        return intregadorModelSet;
     }
 
-    public void setIdIntregador(Long idIntregador) {
-        this.idIntregador = idIntregador;
+    public void setIntregadorModelSet(Set<IntregadorModel> intregadorModelSet) {
+        this.intregadorModelSet = intregadorModelSet;
     }
 }

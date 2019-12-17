@@ -18,8 +18,6 @@ public class CafeModel {
     private Set<IntregadorModel> intregadorModelSet;
 
 
-
-
     public CafeModel() {
     }
 

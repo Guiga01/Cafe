@@ -3,14 +3,14 @@ package br.com.Fundatec.Cafe.Cafe.Model;
 import javax.persistence.*;
 
 @Entity
-public class IntregadorModel {
+public class Entregador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String intregador;
+    private String nome;
     @ManyToOne
     @JoinColumn(name = "id_cafe")
-    private CafeModel cafeModel;
+    private Pedido pedido;
 
     public Long getId() {
         return id;
@@ -21,18 +21,18 @@ public class IntregadorModel {
     }
 
     public String getIntregador() {
-        return intregador;
+        return nome;
     }
 
     public void setIntregador(String intregador) {
-        this.intregador = intregador;
+        this.nome = intregador;
     }
 
-    public CafeModel getCafeModel() {
-        return cafeModel;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setCafeModel(CafeModel cafeModel) {
-        this.cafeModel = cafeModel;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }

@@ -1,43 +1,45 @@
 package br.com.Fundatec.Cafe.Cafe.Model;
 
+import br.com.Fundatec.Cafe.Cafe.enums.SituacaoPedidoEnum;
+
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
-public class CafeModel {
+public class Pedido {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idNome;
-    private String nome;
+    private Long id;
     private String endereco;
     private String produto;
     private LocalDate dataPedido;
     private LocalDate dataEntrega;
-    @OneToMany(mappedBy = "cafeModel")
-    private Set<IntregadorModel> intregadorModelSet;
+    @Enumerated(EnumType.STRING)
+    private SituacaoPedidoEnum situacao;
+    @ManyToOne
+    @JoinColumn(name = "id_entregador")
+    private Entregador entregador;
 
 
-    public CafeModel() {
+    public Pedido() {
     }
 
-    public CafeModel(Long idNome, String nome, String endereco, String produto, LocalDate dataPedido, LocalDate dataEntrega) {
-        this.idNome = idNome;
-        this.nome = nome;
+    public Pedido(String endereco, String produto, LocalDate dataPedido, LocalDate dataEntrega) {
         this.endereco = endereco;
         this.produto = produto;
         this.dataPedido = dataPedido;
         this.dataEntrega = dataEntrega;
     }
 
-    public String getNome() {
-        return nome;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(Long id) {
+        this.id = id;
     }
-
 
     public String getEndereco() {
         return endereco;
@@ -71,19 +73,19 @@ public class CafeModel {
         this.dataEntrega = dataEntrega;
     }
 
-    public Long getIdNome() {
-        return idNome;
+    public SituacaoPedidoEnum getSituacao() {
+        return situacao;
     }
 
-    public void setIdNome(Long idNome) {
-        this.idNome = idNome;
+    public void setSituacao(SituacaoPedidoEnum situacao) {
+        this.situacao = situacao;
     }
 
-    public Set<IntregadorModel> getIntregadorModelSet() {
-        return intregadorModelSet;
+    public Entregador getEntregador() {
+        return entregador;
     }
 
-    public void setIntregadorModelSet(Set<IntregadorModel> intregadorModelSet) {
-        this.intregadorModelSet = intregadorModelSet;
+    public void setEntregador(Entregador entregador) {
+        this.entregador = entregador;
     }
 }

@@ -1,5 +1,7 @@
 package br.com.Fundatec.Cafe.Cafe.api.Dto;
 
+import br.com.Fundatec.Cafe.Cafe.enums.SituacaoPedidoEnum;
+
 import java.time.LocalDate;
 
 public class PedidoOutPutDto {
@@ -8,6 +10,7 @@ public class PedidoOutPutDto {
     private String produto;
     private LocalDate dataPedido;
     private LocalDate dataEntrega;
+    private SituacaoPedidoEnum situacao;
 
     public Long getId() {
         return id;
@@ -47,5 +50,13 @@ public class PedidoOutPutDto {
 
     public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
+    }
+
+    public SituacaoPedidoEnum getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoPedidoEnum situacao) {
+        this.situacao = situacao;
     }
 }

@@ -17,7 +17,7 @@ public class EntregadorService {
         this.pedidoService = pedidoService;
     }
 
-    public Entregador incluir(Entregador entregador,Long idPedido){
+    public Entregador incluir(Entregador entregador, Long idPedido){
         Pedido pedido = pedidoService.consultar(idPedido);
         entregador.setPedido(pedido);
         return entregadorRepository.save(entregador);

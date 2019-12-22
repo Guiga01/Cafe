@@ -17,6 +17,7 @@ public class PedidoMapper {
         pedidoOutPutDto.setEndereco(pedido.getEndereco());
         pedidoOutPutDto.setProduto(pedido.getProduto());
         pedidoOutPutDto.setId(pedido.getId());
+        pedidoOutPutDto.setSituacao(pedido.getSituacao());
         return pedidoOutPutDto;
     }
     public List<PedidoOutPutDto> mapear(List<Pedido> pedidos){
@@ -32,6 +33,7 @@ public class PedidoMapper {
         pedido.setDataPedido(pedidoImputDto.getDataPedido());
         pedido.setEndereco(pedidoImputDto.getEndereco());
         pedido.setProduto(pedidoImputDto.getProduto());
+        pedido.setSituacao(pedidoImputDto.getSituacao());
         return pedido;
     }
 }

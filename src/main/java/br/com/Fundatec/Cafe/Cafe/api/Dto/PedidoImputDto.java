@@ -10,7 +10,6 @@ public class PedidoImputDto {
     private String Produto;
     private LocalDate dataPedido;
     private LocalDate dataEntrega;
-    @NotBlank(message = "campo obrigatório")
     private SituacaoPedidoEnum situacao;
 
     public String getEndereco() {

@@ -4,12 +4,12 @@ import javax.persistence.*;
 
 @Entity
 public class Entregador {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @ManyToOne
-    @JoinColumn(name = "id_cafe")
+    @OneToOne
     private Pedido pedido;
 
     public Long getId() {
@@ -20,12 +20,12 @@ public class Entregador {
         this.id = id;
     }
 
-    public String getIntregador() {
+    public String getNome() {
         return nome;
     }
 
-    public void setIntregador(String intregador) {
-        this.nome = intregador;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Pedido getPedido() {

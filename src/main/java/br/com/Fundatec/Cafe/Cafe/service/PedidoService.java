@@ -14,9 +14,9 @@ public class PedidoService {
     public PedidoService(PedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
     }
-    public List<Pedido> ListaProdutos(String produto){
-       // return pedidoRepository.findByNomeContainingIgnoreCase(produto);
+    public List<Pedido> ListaProdutos(String nome){
         return (List<Pedido>) pedidoRepository.findAll();
+       //return pedidoRepository.findByNomeContainingIgnoreCase(nome);
 
     }
     public Pedido consultar (Long id){

@@ -49,6 +49,11 @@ public class PedidoApi {
     }
 
     @GetMapping("/pedidos")
+    @ApiOperation(value = "Lista todos os pedidos do banco",
+            notes = "")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Listado com sucesso", response = PedidoOutPutDto.class),
+    })
     public ResponseEntity<List<PedidoOutPutDto>>ListaProdutos
             (@RequestParam(required = false, defaultValue = "") String nome) {
         List<Pedido> pedidos = pedidoService.ListaProdutos(nome);
@@ -65,6 +70,11 @@ public class PedidoApi {
         return ResponseEntity.ok(pedidoOutPutDtos);
     }
     @GetMapping("/peiddos/{id}")
+    @ApiOperation(value = "Consulta pedido por id",
+            notes = "")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "consulta realizada com sucesso", response = PedidoOutPutDto.class),
+    })
     public ResponseEntity<PedidoOutPutDto> getPedido(@PathVariable Long id){
     Pedido pedido = pedidoService.consultar(id);
     if (pedido != null){
@@ -72,7 +82,19 @@ public class PedidoApi {
         return ResponseEntity.ok(pedidoOutPutDto);
     }
     return ResponseEntity.noContent().build();
-}
+
+    }
+    @DeleteMapping("/pedidos/{id}")
+    @ApiOperation(value = "exclui o pedido por id ",
+            notes = "")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "excluido com sucesso", response = PedidoOutPutDto.class),
+    })
+    public ResponseEntity<?> excluirPedido(@PathVariable Long id){
+        pedidoService.excluir(id);
+        return ResponseEntity.ok().build();
+    }
+
 
 
 

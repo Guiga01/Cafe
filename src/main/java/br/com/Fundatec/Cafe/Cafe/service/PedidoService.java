@@ -16,7 +16,7 @@ public class PedidoService {
     }
     public List<Pedido> ListaProdutos(String nome){
         return (List<Pedido>) pedidoRepository.findAll();
-       //return pedidoRepository.findByNomeContainingIgnoreCase(nome);
+
 
     }
     public Pedido consultar (Long id){
@@ -25,5 +25,9 @@ public class PedidoService {
     public Pedido incluir(Pedido pedido){
         return pedidoRepository.save(pedido);
     }
+    public void excluir(Long id){
+        pedidoRepository.deleteById(id);
+    }
+
 
 }
